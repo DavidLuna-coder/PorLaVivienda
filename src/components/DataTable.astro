@@ -1,0 +1,91 @@
+---
+import { urbanaData } from '../lib/data'
+
+// Mostrar solo los primeros 10 registros para la prueba
+const dataToShow = urbanaData.slice(0, 10)
+---
+
+<div class="table-container">
+  <h2>Datos del CSV 2025 - Prueba</h2>
+  <p>Total de registros: {urbanaData.length}</p>
+  
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Año</th>
+        <th>CCAA</th>
+        <th>Provincia</th>
+        <th>Código</th>
+        <th>Ciudad</th>
+        <th>Titulares Totales</th>
+        <th>Propiedades Totales</th>
+        <th>Titulares (1) - FIS_NA</th>
+        <th>Titulares (1) - Sociedades</th>
+      </tr>
+    </thead>
+    <tbody>
+      {dataToShow.map((row) => (
+        <tr>
+          <td>{row.year}</td>
+          <td>{row.ccaa}</td>
+          <td>{row.province}</td>
+          <td>{row.code}</td>
+          <td>{row.city}</td>
+          <td>{row.totalOwners}</td>
+          <td>{row.totalProperties}</td>
+          <td>{row.owners.onlyOne.fisNA}</td>
+          <td>{row.owners.onlyOne.sociedades}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .table-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+
+  h2 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .data-table thead {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .data-table th {
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid #ddd;
+  }
+
+  .data-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  .data-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .data-table tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+</style>
