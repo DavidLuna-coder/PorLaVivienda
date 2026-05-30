@@ -1,0 +1,35 @@
+---
+const {
+  title = '',
+  description = '',
+  wrapperClass = '',
+  bgClass = 'absolute inset-px rounded-lg bg-white dark:bg-gray-800',
+  overlayClass = 'pointer-events-none absolute inset-px rounded-lg shadow-sm outline outline-black/5 dark:outline-white/15',
+  mediaClass = 'flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2',
+  image,
+  imageDark,
+} = Astro.props;
+---
+
+<div class={['relative', wrapperClass].join(' ').trim()}>
+  <div class={bgClass}></div>
+  <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+    <div class="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
+      {title && <p class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center dark:text-white">{title}</p>}
+      {description && <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center dark:text-gray-400">{description}</p>}
+    </div>
+
+    { (image || imageDark) ? (
+      <div class={mediaClass}>
+        {image && <img src={image} alt="" class="w-full max-lg:max-w-xs dark:hidden" />}
+        {imageDark && <img src={imageDark} alt="" class="w-full not-dark:hidden max-lg:max-w-xs" />}
+      </div>
+    ) : (
+      <div class={mediaClass}>
+        <slot name="media" />
+      </div>
+    )}
+  </div>
+
+  <div class={overlayClass}></div>
+</div>
