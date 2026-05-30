@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 
 // Tipos de Personas Fiscales basados en primera letra del NIF
-enum PersonaFiscalType {
+export enum PersonaFiscalType {
     FIS_NA = "FIS_NA",           // Física Nacional
     FIS_EX = "FIS_EX",           // Física Extranjera
     SOCIEDADES = "SOCIEDADES",   // Sociedades
@@ -18,7 +18,7 @@ enum PersonaFiscalType {
 }
 
 // Datos de Urbana por Tipo de Persona Fiscal
-interface OwnerData {
+export interface OwnerData {
     onlyOne: PersonaFiscalData,
     twoToFive: PersonaFiscalData,
     sixToTen: PersonaFiscalData,
@@ -26,7 +26,7 @@ interface OwnerData {
     twentySixToHundred: PersonaFiscalData,
     moreThan100: PersonaFiscalData
 }
-interface UrbanaResidentialData {
+export interface UrbanaResidentialData {
     year: number
     ccaa: string
     province: string
@@ -41,7 +41,7 @@ interface UrbanaResidentialData {
 }
 
 
-interface PersonaFiscalData {
+export interface PersonaFiscalData {
     fisNA: number                // Física Nacional
     fisEX: number                // Física Extranjera
     sociedades: number           // Sociedades
