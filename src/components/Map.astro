@@ -136,17 +136,17 @@ const numProv = Object.keys(byProv).length;
   </div>
 </section>
 
-<script
+<div
   id="plv-data"
-  type="application/json"
-  set:text={JSON.stringify({
+  hidden
+  data-config={JSON.stringify({
     STATS: byProv,
     NAC: { ...nacional, pct: nacionalPct },
     GEOJSON_URL,
     UMBRAL: UMBRAL_GRAN_TENEDOR,
     NUMPROV: numProv,
   })}
-></script>
+></div>
 
 <script>
   import { initMap } from "../scripts/map.js";
