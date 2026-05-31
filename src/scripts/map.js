@@ -26,7 +26,7 @@ function cssVar(name, fallback) {
 export async function initMap() {
   const dataEl = document.getElementById("plv-data");
   if (!dataEl) return;
-  const { STATS, NAC, GEOJSON_URL, UMBRAL, NUMPROV } = JSON.parse(dataEl.textContent);
+  const { STATS, NAC, GEOJSON_URL, UMBRAL, NUMPROV } = JSON.parse(dataEl.dataset.config);
 
   await loadD3();
   const d3 = window.d3;
