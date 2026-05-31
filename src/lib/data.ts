@@ -1,8 +1,6 @@
-import { codec, int } from "astro:schema"
 import { readFileSync } from 'fs'
-import { resolve } from 'path'
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
+// Contenido del CSV embebido por Vite (?raw): funciona en dev y en build.
+import csvContent from '../assets/2025.csv?raw'
 
 // Tipos de Personas Fiscales basados en primera letra del NIF
 export enum PersonaFiscalType {
@@ -121,15 +119,10 @@ export function readCsv(filePath: string): UrbanaResidentialData[] {
     return parseCsvContent(csvContent)
 }
 
-// Load and parse the CSV data
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-const csvPath = resolve(__dirname, '../assets/2025.csv')
-
+// Load and parse the CSV data (embebido vía import ?raw)
 let urbanaData: UrbanaResidentialData[] = []
 try {
-    console.log('Loading CSV from:', csvPath)
-    urbanaData = readCsv(csvPath)
+    urbanaData = parseCsvContent(csvContent)
     console.log('CSV loaded successfully. Total records:', urbanaData.length)
 } catch (error) {
     console.error('Error loading CSV:', error)
