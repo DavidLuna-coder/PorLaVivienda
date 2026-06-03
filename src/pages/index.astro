@@ -6,6 +6,26 @@ import "../styles/global.css";
 ---
 
 <Layout>
+	<div class="hero-dots absolute inset-0 pointer-events-none"></div>
 	<Hero />
 	<Map />
+	
+	
 </Layout>
+
+<style>
+  .hero-dots {
+	z-index: 0;
+    background-color: transparent;
+    background-image: radial-gradient(var(--color-base-300) 1px, transparent 1px);
+    background-size: 16px 16px;
+    mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 70%, transparent 100%);
+  }
+
+  [data-theme="dark"] .hero-dots {
+    background-color: #00091d;
+    background-image: radial-gradient(#ffffff33 1px, #00091d 1px);
+    background-size: 20px 20px;
+    mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 70%, transparent 100%);
+  }
+</style>
